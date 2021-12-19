@@ -4,18 +4,16 @@ Dispatch system that works with our mdt.
 
 Available alerts:
 
-[+] un-dispatch:drugsale - Drug Sale
+[+] un-dispatch:bankrobbery - Bank Robbery
+
+[+] un-dispatch:storerobbery - Store Robbery
 
 [+] un-dispatch:houserobbery - House Robbery
 
-[+] un-dispatch:bankrobbery - Bank Robbery
-
-[+] un-dispatch:bankrobbery:pacific - Pacific Bank Robbery
+[+] un-dispatch:jewelrobbery - Vangelico Robbery
 
 [+] un-dispatch:jailbreak - Jail Break
 
-[+] un-dispatch:jewelrobbery - Jewel Robbery
+[+] un-dispatch:carjacking - Vehicle Theft
 
-[+] un-dispatch:carjacking - Car Jacking
-
-[+] un-dispatch:downplayer - Dead Player
+[+] un-dispatch:gunshot - Shots Fired
