@@ -16,6 +16,8 @@ function GetStreetAndZone()
 end
 
 Citizen.CreateThread(function()
+    local cooldown = 0
+    local isBusy = false
 	while true do
 		Citizen.Wait(0)
         local playerPed = PlayerPedId()
@@ -29,8 +31,16 @@ Citizen.CreateThread(function()
                 secondColor = GetVehicleCustomSecondaryColour(vehicle),
                 heading = GetEntityHeading(vehicle)
             })
-        elseif IsPedShooting(playerPed) and not IsPedCurrentWeaponSilenced(playerPed) and Config["AutoAlerts"]["GunshotAlert"] then
-            TriggerEvent("un-dispatch:gunshot")
+        elseif IsPedShooting(playerPed) and (cooldown == 0 or cooldown - GetGameTimer() < 0) and not isBusy and Config["AutoAlerts"]["GunshotAlert"] then
+            isBusy = true
+            if IsPedCurrentWeaponSilenced(playerPed) then
+                cooldown = GetGameTimer() + math.random(25000, 30000)
+                TriggerEvent("un-dispatch:gunshot")
+            else
+                cooldown = GetGameTimer() + math.random(15000, 20000)
+                TriggerEvent("un-dispatch:gunshot")
+            end
+            isBusy = false
         end
     end
 end)
